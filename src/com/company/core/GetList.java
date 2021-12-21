@@ -1,4 +1,4 @@
-package com.company.get_school;
+package com.company.core;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -13,6 +13,11 @@ public class GetList {
     public static ArrayList<String> list_of_schools = new ArrayList<>();
 
     public GetList(){
+        ArrayList<String> cities = GetList.getCities();
+        System.out.println(cities);
+    }
+
+    public static ArrayList<String> getCities() {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -26,14 +31,17 @@ public class GetList {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
                     String school = eElement.getElementsByTagName("name").item(0).getTextContent();
-                    list_of_schools.add(school);
-                    System.out.println(school);
+
+                    if (!school.equals("")) {
+                        list_of_schools.add(school);
+                    }
                 }
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(list_of_schools);
+
+        return list_of_schools;
     }
 }
