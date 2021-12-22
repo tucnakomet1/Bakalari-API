@@ -30,7 +30,6 @@ public class LogIn {
 
             // get JSON values
             JSONObject obj = new JSONObject(req);
-            System.out.println(obj);
 
             String ApiVersion = obj.getString("bak:ApiVersion");
             String AppVersion = obj.getString("bak:AppVersion");

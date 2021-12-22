@@ -8,12 +8,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.util.ArrayList;
 
-public class GetList {
+public class City {
     public static String schools_url = "https://sluzby.bakalari.cz/api/v1/municipality";
     public static ArrayList<String> list_of_schools = new ArrayList<>();
 
-    public GetList(){
-        ArrayList<String> cities = GetList.getCities();
+    public City(){
+        ArrayList<String> cities = City.getCities();
         System.out.println(cities);
     }
 

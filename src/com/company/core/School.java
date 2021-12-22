@@ -13,7 +13,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class GetSpecificCity {
+public class School {
     public static String city;
     public static ArrayList<String> list_of_NAMEs = new ArrayList<>();
     public static ArrayList<String> list_of_URLs = new ArrayList<>();
@@ -62,7 +62,7 @@ public class GetSpecificCity {
         return result;
     }
 
-    public GetSpecificCity(){
+    public School(){
         ArrayList<ArrayList<String>> schools = getSchools(city);
         for (int i = 0; i < schools.get(0).size(); i++) {
             System.out.println(schools.get(0).get(i));

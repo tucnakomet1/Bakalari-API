@@ -27,10 +27,8 @@ public class PostRequest {
         // send POST/ GET request
         if (post) {
             httpURLConnection.setRequestMethod("POST");
-            System.out.println("POST:" + httpURLConnection);
         } else {
             httpURLConnection.setRequestMethod("GET");
-            System.out.println("GET:" + httpURLConnection);
         }
         httpURLConnection.setUseCaches(false);
         if(data!=null){

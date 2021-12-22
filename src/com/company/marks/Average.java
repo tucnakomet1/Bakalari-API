@@ -31,7 +31,7 @@ public class Average {
                     mark_count = mark_count + mark;
                     weight_count = weight_count + weight;
                 }
-                float res = (float) (Math.round(((mark_count /weight_count)*100)* 100) / 100);
+                float res = (float) (Math.round(((mark_count /weight_count)*100)* 100d) / 100d);
                 average.add(res);
             }
         }
