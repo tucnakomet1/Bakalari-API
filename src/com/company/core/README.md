@@ -3,7 +3,7 @@
 - [Školy](#skoly)
 - [Přihlášení](#prihlaseni)
 
-# Města
+<h1 id="mesta">Města</h1>
 
 Třída `City` pro výčet všech měst, které podporují Bakaláře.
 
@@ -41,7 +41,7 @@ Aš
 Žulová
 ```
 
-# Školy
+<h1 id="skoly">Školy</h1>
 
 Třída `School` pro výčet škol daného města.
 
@@ -79,7 +79,7 @@ Název školy: ZŠ a MŠ s polským jazykem vyučovací,Albrechtice,Školní 11
 Adresa URL školy: https://zsamsalbrechtice.bakalari.cz
 ```
 
-# Přihlášení
+<h1 id="prihlaseni">Přihlášení</h1>
 
 Nejdůležitější třída (`LogIn`), slouží k přihlášení uživatele do systému Bakaláři.
 

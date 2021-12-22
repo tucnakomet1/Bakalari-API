@@ -6,7 +6,7 @@ Cílem _bylo, je_ a _bude_ usnadnit přístup k Bakalářům v Javě, abyste se 
 
 | Verze | Odkaz na `.jar` |
 | --- | --- |
-| 0.0.3 | [balalari-0.0.3.jar](https://github.com/bakalari-api/bakalari-api-v3/releases/download/0.0.3/balalari-0.0.3.jar)
+| 0.0.3 | [balalari-0.0.3.jar](https://github.com/tucnakomet1/Bakalari-API/releases/download/0.0.3/bakalari-0.0.3.jar)
 
 ## Odkazy na bližší dokumentaci
 - [Core](src/com/company/core/README.md)
