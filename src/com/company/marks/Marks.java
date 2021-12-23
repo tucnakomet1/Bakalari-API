@@ -9,11 +9,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetMarks {
-    public static GetMarks getMarks;
-    public static String school_url;
-    public static String accessToken;
-    public static String json;
+public class Marks {
+    public static Marks getMarks;
+    public static String school_url, accessToken, json;
     public static ArrayList<String> subjects_list = new ArrayList<>();
     public static ArrayList<String> abb_subjects_list = new ArrayList<>();
     public static ArrayList<Boolean> points_list = new ArrayList<>();
@@ -25,11 +23,11 @@ public class GetMarks {
 
     public void getInstance() {
         if (getMarks == null) {
-            getMarks = new GetMarks(school_url, accessToken);
+            getMarks = new Marks(school_url, accessToken);
         }
     }
 
-    public GetMarks(String school_url, String accessToken) {
+    public Marks(String school_url, String accessToken) {
         try {
             if (school_url != null) {
                 URL marks_url = new URL(school_url + "api/3/marks");
@@ -48,22 +46,16 @@ public class GetMarks {
                     ArrayList<String> sub_cap = new ArrayList<>();
 
                     JSONObject subject = subjects.getJSONObject(i);
-
-                    String con_subject = subject.getJSONObject("Subject").getString("Name");
-                    String abb_con_subject = subject.getJSONObject("Subject").getString("Abbrev");
                     JSONArray mark_subject = subject.getJSONArray("Marks");
                     boolean is_points = mark_subject.getJSONObject(0).getBoolean("IsPoints");
 
-                    subjects_list.add(con_subject);
-                    abb_subjects_list.add(abb_con_subject.trim());
+                    subjects_list.add(subject.getJSONObject("Subject").getString("Name"));
+                    abb_subjects_list.add((subject.getJSONObject("Subject").getString("Abbrev")).trim());
                     points_list.add(is_points);
 
                     for (int j = 0; j < mark_subject.length(); j++) {
                         JSONObject mark = mark_subject.getJSONObject(j);
                         String str_mark = mark.getString("MarkText");
-                        String str_mDate = mark.getString("MarkDate");
-                        String str_eDate = mark.getString("EditDate");
-                        String str_cap = mark.getString("Caption");
 
                         int int_weight;
                         if (is_points) {
@@ -75,21 +67,19 @@ public class GetMarks {
                         if (str_mark.contains("-")) {
                             str_mark = str_mark.replaceAll("-", ".5");
                         }
-
                         float res_got_mark = Float.parseFloat(str_mark);
 
                         sub_marks.add(res_got_mark);
                         sub_weight.add(int_weight);
-                        sub_mDate.add(str_mDate);
-                        sub_eDate.add(str_eDate);
-                        sub_cap.add(str_cap);
+                        sub_mDate.add(mark.getString("MarkDate"));
+                        sub_eDate.add(mark.getString("EditDate"));
+                        sub_cap.add(mark.getString("Caption"));
                     }
                     marks_list.add(sub_marks);
                     weight_list.add(sub_weight);
                     mark_date_list.add(sub_mDate);
                     edit_date_list.add(sub_eDate);
                     caption_list.add(sub_cap);
-
                 }
             }
         } catch (JSONException | IOException e) {
@@ -97,6 +87,7 @@ public class GetMarks {
         }
     }
 
+    // functions
     public static String get_json() {
         return json;
     }

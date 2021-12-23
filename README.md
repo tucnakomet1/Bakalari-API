@@ -6,7 +6,7 @@ Cílem _bylo, je_ a _bude_ usnadnit přístup k Bakalářům v Javě, abyste se 
 
 | Verze | Odkaz na `.jar` |
 | --- | --- |
-| 0.0.3 | [balalari-0.0.3.jar](https://github.com/tucnakomet1/Bakalari-API/releases/download/0.0.3/bakalari-0.0.3.jar)
+| 0.0.4 | [balalari-0.0.4.jar](https://github.com/tucnakomet1/Bakalari-API/releases/download/0.0.4/bakalari-0.0.4.jar)
 
 ## Odkazy na bližší dokumentaci
 - [Core](src/com/company/core/README.md)
@@ -14,6 +14,7 @@ Cílem _bylo, je_ a _bude_ usnadnit přístup k Bakalářům v Javě, abyste se 
   - [Školy](src/com/company/core/README.md#skoly)
   - [Přihlášení](src/com/company/core/README.md#prihlaseni)
 - [Absence](src/com/company/absence/README.md)
+- [Pololetí](src/com/company/pololeti/README.md)
 - [Známky](src/com/company/marks/README.md)
 
 
@@ -21,9 +22,8 @@ Cílem _bylo, je_ a _bude_ usnadnit přístup k Bakalářům v Javě, abyste se 
 
 - [x] Absence
 - [ ] Domácí úkoly
-- [ ] GDPR
 - [ ] Komens
-- [ ] Pololetí
+- [x] Pololetí
 - [x] Přihlášení
 - [ ] Rozvrh hodin
 - [x] Seznam měst
@@ -36,4 +36,4 @@ Cílem _bylo, je_ a _bude_ usnadnit přístup k Bakalářům v Javě, abyste se 
 
 ---
 
-*Poslední aktualizace proběhla 22.12.2021*
+*Poslední aktualizace proběhla 23.12.2021*

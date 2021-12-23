@@ -1,8 +1,6 @@
 package com.company.absence;
 
 import com.company.core.PostRequest;
-import com.company.marks.Average;
-import com.company.marks.GetMarks;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,11 +9,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetAbsence {
-    public static GetAbsence getAbsence;
-    public static String school_url;
-    public static String accessToken;
-    public static String json;
+public class Absence {
+    public static Absence getAbsence;
+    public static String school_url, accessToken, json;
     public static double average_absence;
     public static ArrayList<String> subjects_list = new ArrayList<>();
     public static ArrayList<Integer> lessons_list = new ArrayList<>();
@@ -25,11 +21,11 @@ public class GetAbsence {
 
     public void getInstance() {
         if (getAbsence == null) {
-            getAbsence = new GetAbsence(school_url, accessToken);
+            getAbsence = new Absence(school_url, accessToken);
         }
     }
 
-    public GetAbsence(String school_url, String accessToken) {
+    public Absence(String school_url, String accessToken) {
         try {
             if (school_url != null) {
                 URL marks_url = new URL(school_url + "api/3/absence/student");
@@ -43,18 +39,11 @@ public class GetAbsence {
                 for (int i = 0; i < absences.length(); i++) {
                     JSONObject abs = absences.getJSONObject(i);
 
-                    String subject_name = abs.getString("SubjectName");
-                    int lessons_count = abs.getInt("LessonsCount");
-                    int late_absence = abs.getInt("Late");
-
-                    int base = abs.getInt("Base");
-                    int school_absence = abs.getInt("School");
-
-                    subjects_list.add(subject_name);
-                    lessons_list.add(lessons_count);
-                    late_list.add(late_absence);
-                    absence_list.add(base);
-                    school_events_list.add(school_absence);
+                    subjects_list.add(abs.getString("SubjectName"));
+                    lessons_list.add(abs.getInt("LessonsCount"));
+                    late_list.add(abs.getInt("Late"));
+                    absence_list.add(abs.getInt("Base"));
+                    school_events_list.add(abs.getInt("School"));
                 }
             }
         } catch (JSONException | IOException e) {
@@ -65,6 +54,7 @@ public class GetAbsence {
     public static String get_json() {
         return json;
     }
+    public static Double get_average_absence() {return average_absence;}
     public static ArrayList<String> get_subjects(){
         return subjects_list;
     }
@@ -80,7 +70,7 @@ public class GetAbsence {
     public static ArrayList<Integer> get_school_events() {
         return school_events_list;
     }
-    public static ArrayList<Float> get_percente(boolean school_events) {
+    public static ArrayList<Float> get_percent(boolean school_events) {
         ArrayList<Float> perc = new ArrayList<>();
         for (int i = 0; i < subjects_list.size(); i++) {
             float proc;

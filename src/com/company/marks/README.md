@@ -1,14 +1,14 @@
 # Známky
 
-Třída `GetMarks` pro získání předmětů a jejich známek.
+Třída `Marks` pro získání předmětů a jejich známek.
 
 *Nejprve je třeba se přihlásit - viz. [LogIn](../core/README.md#prihlaseni)*
 
 | Argument | Typ | Popis |
 | --- | --- | --- |
 | `get_json()` | `String` | Vrátí originální JSON. |
-| `get_mark_date()` | `ArrayList<ArrayList<String>>` | Vrátí seznam všech dat přidání všech známek odpovídajících danému předmětu. |
-| `get_edit_date()` | `ArrayList<ArrayList<String>>` | Vrátí seznam všech dat úprav všech známek odpovídajících danému předmětu. |
+| `get_mark_date()` | `ArrayList<ArrayList<String>>` | Vrátí seznam dat přidání všech známek odpovídajících danému předmětu. |
+| `get_edit_date()` | `ArrayList<ArrayList<String>>` | Vrátí seznam dat úprav všech známek odpovídajících danému předmětu. |
 | `get_caption()` | `ArrayList<ArrayList<String>>` | Vrátí seznam všech nadpisů známek odpovídajících danému předmětu |
 | `get_marks()` | `ArrayList<ArrayList<Float>>` | Vrátí seznam všech známek odpovídajících danému předmětu. |
 | `get_weight()` | `ArrayList<ArrayList<Integer>>` | Vrátí seznam všech vah známek odpovídajících danému předmětu.|
@@ -27,30 +27,30 @@ Třída `GetMarks` pro získání předmětů a jejich známek.
 ```java
 // [...]
 
-ArrayList<String> userInfo = LogIn.getData("username", "password", school);
+ArrayList<String> login = LogIn.getData("username", "password", school);
 
-new GetMarks(school, userInfo.get(0)).getInstance();
+new Marks(school, login.get(0)).getInstance();
 
-for (int i = 0; i < GetMarks.get_mark_date().size(); i++) {
+for (int i = 0; i < Marks.get_mark_date().size(); i++) {
     String prumer = "\n---\n\nCelkový průměr známek z předmětu: "
-        + GetMarks.get_subject(true).get(i) + " ("
-        + GetMarks.get_subject(false).get(i) + ") je "
-        + GetMarks.get_average().get(i);
+        + Marks.get_subject(true).get(i) + " ("
+        + Marks.get_subject(false).get(i) + ") je "
+        + Marks.get_average().get(i);
     
-    if (!GetMarks.get_points().get(i)) {
+    if (!Marks.get_points().get(i)) {
         System.out.println(prumer);
     } else {
         System.out.println(prumer + " %");
     }
 
-    for (int j = 0; j < GetMarks.get_mark_date().get(i).size(); j++) {
+    for (int j = 0; j < Marks.get_mark_date().get(i).size(); j++) {
         System.out.println("\nZnámka: "
-            + GetMarks.get_marks().get(i).get(j) + " (váha: "
-            + GetMarks.get_weight().get(i).get(j) + ")" );
+            + Marks.get_marks().get(i).get(j) + " (váha: "
+            + Marks.get_weight().get(i).get(j) + ")" );
         
-        System.out.println("Téma: " + GetMarks.get_caption().get(i).get(j));
-        System.out.println("Datum přidání známky: " + GetMarks.get_mark_date().get(i).get(j));
-        System.out.println("Datum poslední úpravy: " + GetMarks.get_edit_date().get(i).get(j));
+        System.out.println("Téma: " + Marks.get_caption().get(i).get(j));
+        System.out.println("Datum přidání známky: " + Marks.get_mark_date().get(i).get(j));
+        System.out.println("Datum poslední úpravy: " + Marks.get_edit_date().get(i).get(j));
     }
 }
 
